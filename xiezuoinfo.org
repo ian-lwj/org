@@ -1,0 +1,47 @@
+# -*- buffer-auto-save-file-name: nil; -*-
+*  内部质料
+开发人员常用信息（内有开发服务器地址，云平台开发同事请使用138服务器，用户名/密码: liuwenjun/liuwenjun）
+<http://192.168.1.175/mediawiki/index.php/%E6%96%B0%E5%91%98%E5%B7%A5%E5%85%A5%E8%81%8C>
+
+云平台系统总体架构
+<http://192.168.1.175/mediawiki/index.php/NMS>
+
+视频网关(参考媒体管理部分)
+http://192.168.1.175/mediawiki/index.php/NMS#.E5.AA.92.E4.BD.93.E7.AE.A1.E7.90.86 <http://192.168.1.175/mediawiki/index.php/NMS>
+
+视频网关开发wiki：（请参考编译方式）
+<http://192.168.1.175/mediawiki/index.php/MG64>
+
+视频网关开发分支：
+svn://192.168.1.175/VISServer/branches/ng_mg
+
+\\192.168.1.144\Temp\视频结构化项目\参考资料 user001/123456
+
+*  公网服务器
+**  120.24.3.213                                                      :crypt:
+-----BEGIN PGP MESSAGE-----
+
+jA0ECQMC/0xlCxuL6Xr/0kYBoMRByLomIeLvxyoeSNQHKFNZTMPP0qRQMSuav3Bw
+IamcbGXu7nNQzv2dvFml1ZwRsUDySKYfgWyhrk2xdXo/i8Rba16X
+=ioax
+-----END PGP MESSAGE-----
+**  47.106.214.106                                                    :crypt:
+-----BEGIN PGP MESSAGE-----
+
+jA0ECQMCyCvGtxfQRKj/0kYBxmxRmwCXBjbdkOt0tj7mquq8KE9Ov+kP+AKmcrNm
+KMPjH1Hvx3tLE2zEzmBTIEMheWjhOt2nQ3Xjw63c5FM+4royLuxe
+=Bllp
+-----END PGP MESSAGE-----
+
+*  内部服务器
+   khadas@192.168.1.140  khadas
+   nvidia@192.168.1.112  123456
+
+*  打印机
+   HP Laser Jet MFP M225-M226 PCL 6
+
+*  ffmpeg hardware
+   export LIBVA_DRIVER_NAME=i965
+   export LIBVA_DRIVERS_PATH=/home/jgh/usr/local/libva/lib/dri/
+   https://trac.ffmpeg.org/wiki/Hardware/QuickSync
+

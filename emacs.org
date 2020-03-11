@@ -1,12 +1,18 @@
-*  goto mark
+* goto mark
   C-spc C-spc set a mark and del highlight line;
   C-u C-spc go back to last mark in current buffer;
   pop-global-mark jump to last mark in all buffers;
   use counsel-mark-ring and helm-all-mark-rings to select mark in mark-ring.
   (more about bm, ivy-pop-view,ivy-push-view.)
 
+* setup for C/C++
+  http://tuhdo.github.io/c-ide.html
+
 * org mode
   https://orgmode.org/org.html
 
-* setup for C/C++
-  http://tuhdo.github.io/c-ide.html
+* Projectile
+  https://docs.projectile.mx/en/latest/
+   
+* elpy
+  https://elpy.readthedocs.io/en/latest/introduction.html

@@ -1,0 +1,45 @@
+* v2ray
+  wget https://install.direct/go.sh
+  wget https://github.com/v2ray/dist/blob/v4.22.1/v2ray-linux-64.zip
+  sudo bash go.sh -l linux-64.zip
+  sudo systemctl start v2ray
+
+** server
+   bash <(curl -s -L https://git.io/v2ray.sh)
+   v2ray qr
+
+** client
+/etc/v2ray/config.json
+{
+  "inbounds": [
+          {
+                "port": 1080, // local listen port;
+                "protocol": "socks",
+                "sniffing": {
+                        "enabled": true,
+                        "destOverride": ["http", "tls"]
+                },
+                "settings": {
+                        "auth": "noauth" // no auth;
+                }
+        }
+      ],
+  "outbounds": [{
+    "protocol": "vmess", //protocal;
+    "settings": {
+        "vnext": [
+            {
+                "address": "140.82.35.192", // server ip;
+                "port": 55838, // server port;
+                "users": [
+                        {
+                                "id": "7df3ac64-1d29-4d70-b5cc-d897b7a01827", // server id;
+                                "alterId": 233 // same as server alterId;
+                        }
+                ]
+            }
+            ]
+        }
+    }
+  ]
+}

@@ -45,3 +45,6 @@ KMPjH1Hvx3tLE2zEzmBTIEMheWjhOt2nQ3Xjw63c5FM+4royLuxe
    export LIBVA_DRIVERS_PATH=/home/jgh/usr/local/libva/lib/dri/
    https://trac.ffmpeg.org/wiki/Hardware/QuickSync
 
+
+*  TODO 
+   https://www.huaweicloud.com/ascend/doc/Atlas200DK/1.3.0.0/zh/overview

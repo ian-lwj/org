@@ -8,6 +8,9 @@
 * setup for C/C++
   http://tuhdo.github.io/c-ide.html
 
+** global
+  https://www.gnu.org/software/global/globaldoc_toc.html#Introduction
+
 * org mode
   https://orgmode.org/org.html
 
@@ -16,3 +19,15 @@
    
 * elpy
   https://elpy.readthedocs.io/en/latest/introduction.html
+* jdee
+  https://www.emacswiki.org/emacs/JavaDevelopmentEnvironment
+
+* Menu Bar
+  Enable the Menu Bar
+  The menu bar is enabled by default.
+  You can type the command M-x menu-bar-mode to toggle it on and off temporarily.
+  To enable it permanently
+  Add (menu-bar-mode 1) to the end of your init file.
+  Disable the Menu Bar
+  To disable the menu bar.
+  Add (menu-bar-mode -1) to your init file.

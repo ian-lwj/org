@@ -1,0 +1,5 @@
+* apt-repository
+  sudo add-apt-repository ppa
+  sudo add-apt-repository --remove ppa
+** python3.6 ubuntu16.04
+   ppa:deadsnakes/ppa

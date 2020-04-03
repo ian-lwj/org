@@ -5,11 +5,24 @@
   use counsel-mark-ring and helm-all-mark-rings to select mark in mark-ring.
   (more about bm, ivy-pop-view,ivy-push-view.)
 
+* get/set env
+   http://ergoemacs.org/emacs/emacs_env_var_paths.html  
+
+
+* eval
+  eval-buffer
+
+* global
+   https://www.gnu.org/software/global/globaldoc_toc.html#Introduction
+   GTAGSLIBPATH
+
 * setup for C/C++
   http://tuhdo.github.io/c-ide.html
 
-** global
-  https://www.gnu.org/software/global/globaldoc_toc.html#Introduction
+   
+** helm-projectile 
+   https://github.com/bbatsov/helm-projectile
+   https://tuhdo.github.io/helm-projectile.html
 
 * org mode
   https://orgmode.org/org.html

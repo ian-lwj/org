@@ -23,6 +23,7 @@
 
 ** locale
   locale/locale -a
+  /etc/locale.gen 
   locale-gen --purge
   /var/lib/locales/supported.d
   language-pack-zh

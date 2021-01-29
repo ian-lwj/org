@@ -1,5 +1,61 @@
-* apt-repository
+* LiveUSB
+  sudo fdisk -l
+  sudo umount /dev/sdb*
+  sudo mkfs.vfat /dev/sdb -I
+  sudo dd if=xxx.iso of=/dev/sdb
+
+* ubuntu
+** apt-repository
   sudo add-apt-repository ppa
   sudo add-apt-repository --remove ppa
-** python3.6 ubuntu16.04
-   ppa:deadsnakes/ppa
+
+** dns
+  /etc/resolvconf/resolv.conf.d/base
+  resolvconf -u
+
+** umask
+  umask 0022
+
+** update-alternatives
+  sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 # 添加Python2可选项，优先级为2
+  sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 #添加Python3可选项，优先级为1
+  sudo update-alternatives --config python
+
+** locale
+  locale/locale -a
+  locale-gen --purge
+  /var/lib/locales/supported.d
+  language-pack-zh
+** nfs
+  /etc/exports:
+  /{dir} *(rw,sync,no_root_squash,all_squash,anonuid={uid},anongid={gid})
+  /etc/fstab:
+  {host}:{dir}  {mountpoint}  nfs defaults  0  0
+
+** emoji
+   ibus-setup
+
+* pip
+  pip freeze >requirements.txt
+  pip install -r requirements.txt
+  pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+
+  ~/.pip/pip.conf:
+  [global]
+  index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+  [install]
+  trusted-host = https://pypi.tuna.tsinghua.edu.cn
+
+* virtualenv
+  pip install virtualenv
+
+* virtualenvwrapper
+  export WORKON_HOME='~/.virtualenvs'
+  source ~/.local/bin/virtualenvwrapper.sh
+
+  mkvirtualenv $ENVNAME
+  lsvirtualenv
+  workon $ENVNAME / deactive
+
+
+  

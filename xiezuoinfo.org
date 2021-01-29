@@ -12,9 +12,6 @@ http://192.168.1.175/mediawiki/index.php/NMS#.E5.AA.92.E4.BD.93.E7.AE.A1.E7.90.8
 视频网关开发wiki：（请参考编译方式）
 <http://192.168.1.175/mediawiki/index.php/MG64>
 
-视频网关开发分支：
-svn://192.168.1.175/VISServer/branches/ng_mg
-
 \\192.168.1.144\Temp\视频结构化项目\参考资料 user001/123456
 
 *  公网服务器
@@ -33,6 +30,10 @@ KMPjH1Hvx3tLE2zEzmBTIEMheWjhOt2nQ3Xjw63c5FM+4royLuxe
 =Bllp
 -----END PGP MESSAGE-----
 
+**  124.71.204.68
+    root/Xiezuo01
+
+**  121.36.198.108
 *  内部服务器
    khadas@192.168.1.140  khadas
    nvidia@192.168.1.112  123456
@@ -45,22 +46,101 @@ KMPjH1Hvx3tLE2zEzmBTIEMheWjhOt2nQ3Xjw63c5FM+4royLuxe
    export LIBVA_DRIVERS_PATH=/home/jgh/usr/local/libva/lib/dri/
    https://trac.ffmpeg.org/wiki/Hardware/QuickSync
 
+*  svn
+   svn://192.168.1.175/crps/trunk/module/device
+   svn://192.168.1.175/3rdParty/trunk/src/live555-151012
+   svn://192.168.1.175/viscube/branches/rss32/linux_install
+   svn://192.168.1.175/VISServer/branches/ng_mg
+   svn://192.168.1.175/VISClientForWindows/trunk/rswall
 
-*  TODO 
-   https://www.huaweicloud.com/ascend/doc/Atlas200DK/1.3.0.0/zh/overview
-   python keras_to_tensorflow.py --input_model=./test.h5 --output_model=./test.pb
+*  atlas500
+** ssh
+   /etc/profile:
+   export TMOUT=0
 
-   ../DDK/ddk/bin/x86_64-linux-gcc5.4/omg --model=./my_vgg16.pb --framework=3 --output=./my_vgg16 --input-shape="block1_conv1_input:224,224,3"  --insert_op_conf=aipp.cfg
+   /etc/ssh/sshd_config:
+   # root login
+   PermitRootLogin yes
+   # DenyUsers root
+   # DenyGroups root
 
-   scp -r my_vgg16.om    HwHiAiUser@192.168.3.19:/home/HwHiAiUser/ian/org_out/test_data/model/
+   # no timeout
+   ClientAliveInterval 30
+   TCPKeepAlive yes 
+   ClientAliveCountMax 99999
 
-   ssh HwHiAiUser@192.168.3.19 Mind@123
+   systemctrl reload sshd
 
-   dist = np.linalg.norm(src_feature - feature)
+** network
+   /etc/resolv.conf
+   nameserver 114.114.114.114
+   nameserver 114.114.115.115
 
-   scp -r 192.168.1.149:/home/philyang/git/dataset/dogs-vs-cats/test_data
+** docker
+   docker images
+   docker rmi {image_id}
+   docker ps [-a]
+   docker rm {container_id}
+   docker run -it {image_name/image_id}
+   docker attach {container_id} : CTRL-c / CTRL-p CTRL-q (-it)
+   
+   id HwHiAiUser
+   docker build -t test-image --build-arg NNRT_VERSION=20.0.0.RC1 --build-arg NNRT_ARCH=arm64 .
+   docker run --device=/dev/davinci0 --device=/dev/davinci_manager --device=/dev/hisi_hdc --device /dev/devmm_svm \
+-v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+-v /home/data/miniD/driver/lib64:/home/data/miniD/driver/lib64 \
+-v /home/data/miniD/driver/add-ons:/home/data/miniD/driver/add-ons \
+-v /var/log/npu/conf/slog/slog.conf:/var/log/npu/conf/slog/slog.conf \
+-v /home/data/miniD/driver/tools:/home/data/miniD/driver/tools \
+-v /root/liuwenjun:/root/liuwenjun \
+-it test-image
 
-** vss2
-   ffmpeg -i rtsp://admin:xiezuo01@192.168.3.41/0 http://192.168.1.138:8090/1.ffm
-   http://192.168.1.138:8090/alive?tokens=1,2,3,4,5,6
-   http://192.168.1.138:8090/1.mjpg?token=1
+   apt update
+   apt install ca-certificates
+   cp ~/liuwenjun/src/atlas500/docker/Ubuntu-Ports-bionic.list sources.list
+   apt update
+   apt install python3.7-dev
+   apt install python3-pip
+   python3.7 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Cython
+   python3.7 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy
+   apt install cmake
+   apt install pkg-config
+   apt install libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libavresample-dev
+   export PKG_CONFIG_PATH=/usr/lib/aarch64-linux-gnu/pkgconfig/
+   
+   cd opencv-4.4.0/build
+   cmake -D BUILD_opencv_python3=ON -D PYTHON3_VERSION_STRING=3.7.5 -D PYTHON3_EXECUTABLE=/usr/bin/python3.7 \
+   -D PYTHON3_LIBRARIES=/usr/lib/aarch64-linux-gnu/libpython3.7m.so -D PYTHON3LIBS_VERSION_STRING=3.7 \
+   -D PYTHON3_NUMPY_INCLUDE_DIRS=/usr/local/lib/python3.7/dist-packages/numpy/core/include/ -D PYTHON3_NUMPY_VERSION=1.19.2 \
+   -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/root/liuwenjun/opt/aarch64/opencv-4.4.0 ../
+   make -j 2
+   make install
+
+   export PYTHONPATH=/usr/local/Ascend/nnrt/20.0.0.RC1/pyACL/python/site-packages/acl/:/root/liuwenjun/opt/aarch64/opencv-4.4.0/lib/python3.7/dist-packages/cv2/python-3.7/
+   apt install libjpeg-dev
+   python3.7 -m pip install pillow
+   python3.7 -m pip install requests
+
+** atc
+   install_path=/home/HwHiAiUser/Ascend/ascend-toolkit/20.0.0.RC1
+   export PATH=/usr/local/python3.7.5/bin:${install_path}/atc/ccec_compiler/bin:${install_path}/atc/bin:$PATH
+   export PYTHONPATH=${install_path}/atc/python/site-packages/te:${install_path}/atc/python/site-packages/topi:$PYTHONPATH
+   export LD_LIBRARY_PATH=${install_path}/atc/lib64:$LD_LIBRARY_PATH
+   export ASCEND_OPP_PATH=${install_path}/opp
+   atc --model=./yolov3_coco.pb --framework=3 --output=yolov3_coco --soc_version=Ascend310 --input_shape="input/input_data:1,416,416,3"
+
+*  lvm
+  sudo vgscan
+  sudo vgchange -ay <volume group>
+  sudo lvdisplay
+*  geo
+   http://192.168.3.102:8789/tree/git/slope
+   http://192.168.3.102:8789/notebooks/git/slope/huawei_demo.ipynb
+
+*  hcflv
+   ln -s /usr/bin/python3.6 /usr/bin/python36
+   apt update
+   apt install python3-pip
+   pip3 install flask
+   apt install libxcb-xfixes0
+   apt install libxcb-shape0

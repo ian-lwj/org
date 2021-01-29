@@ -1,0 +1,21 @@
+* node.js
+node -v
+
+
+* npm
+npm -v
+
+npm install -g npm
+
+
+* nrm
+sudo npm install -g nrm
+nrm ls
+nrm test npm
+nrm use taobao
+
+
+* Vue CLI
+sudo npm install -g @vue/cli
+vue --version
+vue create
